@@ -4,11 +4,16 @@ const fs = require("fs-extra");
 const dotenv require("dotenv").config();
 const prompt = require('prompt-sync')();
 
+const name1 = prompt("What is your name?");
+const providerUrl = prompt("RPC Server?");
+const privateKey = prompt("Private Key?");
+
 async function main() {
     // First, compile this!
     // And make sure to have your ganache network up!
-    let provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL)
-    let wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
+   let provider = new ethers.providers.JsonRpcProvider( providerUrl); //process.env.RPC_URL
+	let wallet = new ethers.Wallet(privateKey,provider); //process.env.PRIVATE_KEY, provider
+	
     // const encryptedJson = fs.readFileSync("./.encryptedKey.json", "utf8");
     // let wallet = new ethers.Wallet.fromEncryptedJsonSync(
     //   encryptedJson,
