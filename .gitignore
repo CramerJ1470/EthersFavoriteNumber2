@@ -1,5 +1,5 @@
 node_modules
-
+.env
 .encryptedKey.json
 
 .notes.md
