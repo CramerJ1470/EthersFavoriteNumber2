@@ -1,7 +1,8 @@
 const ethers = require("ethers");
 // const solc = require("solc")
 const fs = require("fs-extra");
-require("dotenv").config();
+const dotenv require("dotenv").config();
+const prompt = require('prompt-sync')();
 
 async function main() {
     // First, compile this!
@@ -60,14 +61,20 @@ async function main() {
      //let resp = await wallet.signTransaction(tx);
      //const sentTxResponse = await wallet.sendTransaction(tx);
      //console.log(resp)
-
+    
+    
+    //console prompt for name //////
+    const prompt = require('prompt-sync')();
+    const name1 = prompt('What is your name?');
+    
     let currentFavoriteNumber = await contract.retrieve()
     console.log(`Current Favorite Number: ${currentFavoriteNumber}`);
     console.log("Updating favorite number...");
-    let transactionResponse = await contract.store(7);
+    let number = Math.floor(Math.random() * 101);
+	let transactionResponse = await contract.store(number); 
     let transactionReceipt = await transactionResponse.wait();
     currentFavoriteNumber = await contract.retrieve();
-    console.log(`New Favorite Number: ${currentFavoriteNumber}`);
+    console.log(`${name1}, your new favorite number is: ${currentFavoriteNumber}`); 
 }
 
 main()
